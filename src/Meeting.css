@@ -1,0 +1,33 @@
+.meeting-container {
+  padding: 28px 32px;
+  background: var(--bg-base);
+  min-height: 100vh;
+}
+
+.meeting-title {
+  font-size: 20px; font-weight: 700;
+  color: var(--text-white);
+  background: none; -webkit-text-fill-color: unset;
+  margin-bottom: 24px; text-align: left;
+}
+
+.table-wrapper { padding: 0; }
+
+table { font-size: 13px; }
+th { background: var(--bg-surface); }
+td { text-align: left; }
+
+.form-section {
+  width: 100%; max-width: 700px;
+  margin: 0 auto; text-align: left;
+}
+.form-section h2 { font-size: 16px; font-weight: 700; color: var(--text-white); margin-bottom: 20px; }
+
+.meeting-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.meeting-form input { width: 100%; }
+
+.button-center { grid-column: span 2; margin-top: 8px; }

@@ -1,0 +1,35 @@
+.document-container {
+  padding: 28px 32px;
+  background: var(--bg-base);
+  min-height: 100vh;
+}
+
+.table-wrapper { padding: 0; }
+th { background: var(--bg-surface); text-align: left; }
+td { text-align: left; }
+
+.download-btn {
+  padding: 6px 14px;
+  background: var(--accent-muted);
+  color: var(--accent-light);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-sm);
+  text-decoration: none; font-size: 12px; font-weight: 600;
+  transition: all 0.15s; display: inline-block;
+  box-shadow: none;
+}
+.download-btn:hover { background: rgba(139,92,246,0.22); transform: none; box-shadow: none; }
+
+.form-section {
+  width: 100%; max-width: 640px;
+  margin: 0 auto;
+}
+.form-section h2 { font-size: 16px; font-weight: 700; color: var(--text-white); text-align: center; margin-bottom: 20px; }
+
+.document-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.document-form input, .document-form select { width: 100%; }
+.button-center { grid-column: span 2; text-align: center; margin-top: 8px; }
