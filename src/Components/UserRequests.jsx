@@ -15,7 +15,7 @@ function UserRequests() {
 
   const fetchUserData = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/user-profile/${userEmail}`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/user-profile/${userEmail}`);
       setUserName(res.data.name);
     } catch (err) { console.error(err); }
   };
@@ -23,7 +23,7 @@ function UserRequests() {
   const fetchRequests = () => {
     if (!userEmail) return;
     setLoading(true);
-    axios.get('http://localhost:5000/api/requests')
+    axios.get(`${import.meta.env.VITE_API_URL}/api/requests`)
       .then(res => { setRequests(res.data.filter(r => r.employeeEmail === userEmail)); })
       .catch(() => showNotification('Failed to load requests', 'error'))
       .finally(() => setLoading(false));
@@ -33,9 +33,9 @@ function UserRequests() {
     e.preventDefault();
     setLoading(true);
     try {
-      const count = await axios.get('http://localhost:5000/api/requests');
+      const count = await axios.get(`${import.meta.env.VITE_API_URL}/api/requests`);
       const requestId = `REQ${String(count.data.length + 1).padStart(4, '0')}`;
-      await axios.post('http://localhost:5000/api/requests', { requestId, employeeName: userName, employeeEmail: userEmail, ...formData });
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/requests`, { requestId, employeeName: userName, employeeEmail: userEmail, ...formData });
       showNotification('Request submitted successfully');
       setFormData({ requestType: '', description: '', priority: 'Medium', attachments: '' });
       setShowForm(false);
@@ -46,7 +46,7 @@ function UserRequests() {
 
   const handleDelete = (id) => {
     if (!window.confirm('Delete this request?')) return;
-    axios.delete(`http://localhost:5000/api/requests/${id}`)
+    axios.delete(`${import.meta.env.VITE_API_URL}/api/requests/${id}`)
       .then(() => { fetchRequests(); showNotification('Request deleted'); })
       .catch(() => showNotification('Failed to delete request', 'error'));
   };

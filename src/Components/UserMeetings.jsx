@@ -62,7 +62,7 @@ function UserMeetings() {
   useEffect(() => {
     const email = localStorage.getItem('userEmail');
     if (!email) { navigate('/'); return; }
-    axios.get(`http://localhost:5000/api/user-meetings/${email}`)
+    axios.get(`${import.meta.env.VITE_API_URL}/api/user-meetings/${email}`)
       .then(res => { setMeetings(res.data); setLoading(false); })
       .catch(() => { setMeetings([]); setLoading(false); });
   }, [navigate]);

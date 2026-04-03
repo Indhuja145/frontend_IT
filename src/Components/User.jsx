@@ -3,7 +3,7 @@ import axios from 'axios';
 import { getAuthHeaders } from './Auth';
 import './User.css';
 
-const API = 'http://localhost:5000/api';
+const API = `${import.meta.env.VITE_API_URL}/api`;
 
 const EMPTY_FORM = { rollNo: '', name: '', email: '', role: '', jobType: '', experience: '', system: '', dateOfJoining: '' };
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './LeaveRequest.css';
 
-const API = 'http://localhost:5000/api';
+const API = `${import.meta.env.VITE_API_URL}/api`;
 
 export default function LeaveRequest() {
   const [formData, setFormData] = useState({ leaveType: '', startDate: '', endDate: '', reason: '' });

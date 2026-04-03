@@ -3,7 +3,7 @@ import axios from "axios";
 import { getAuthHeaders } from "./Auth";
 import "./Document.css";
 
-const apiUrl = "http://localhost:5000/api";
+const apiUrl = `${import.meta.env.VITE_API_URL}/api`;
 
 function Document() {
   const [documents, setDocuments] = useState([]);

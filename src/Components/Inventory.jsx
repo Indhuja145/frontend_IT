@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { getAuthHeaders } from "./Auth";
 import "./Inventory.css";
 
-const apiUrl = "http://localhost:5000/api";
+const apiUrl = `${import.meta.env.VITE_API_URL}/api`;
 
 export default function Inventory() {
   const [items, setItems] = useState([]);

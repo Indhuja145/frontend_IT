@@ -15,7 +15,7 @@ function Query() {
 
   const fetchQueries = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/queries');
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/queries`);
       setQueries(res.data);
     } catch (err) {
       console.error('Failed to fetch queries', err);
@@ -28,7 +28,7 @@ function Query() {
     e.preventDefault();
     if (!newQuery.title || !newQuery.description) return showNotification('Please fill all fields', 'error');
     try {
-      await axios.post('http://localhost:5000/api/add-query', {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/add-query`, {
         ...newQuery,
         postedBy: userName,
         postedByEmail: localStorage.getItem('userEmail') || 'user@example.com',
@@ -45,7 +45,7 @@ function Query() {
   const handlePostAnswer = async () => {
     if (!answer.trim()) return showNotification('Please enter an answer', 'error');
     try {
-      await axios.post(`http://localhost:5000/api/answer-query/${selectedQuery._id}`, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/answer-query/${selectedQuery._id}`, {
         answer,
         answeredBy: userName,
         answeredByEmail: localStorage.getItem('userEmail') || 'user@example.com',
@@ -63,7 +63,7 @@ function Query() {
   const handleDeleteQuery = async (id) => {
     if (!window.confirm('Delete this query?')) return;
     try {
-      await axios.delete(`http://localhost:5000/api/delete-query/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/delete-query/${id}`);
       showNotification('Query deleted', 'success');
       setSelectedQuery(null);
       fetchQueries();

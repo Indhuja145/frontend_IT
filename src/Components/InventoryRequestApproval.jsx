@@ -3,7 +3,7 @@ import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Inventory.css";
 
-const apiUrl = "http://localhost:5000/api";
+const apiUrl = `${import.meta.env.VITE_API_URL}/api`;
 
 export default function InventoryRequestApproval() {
   const [requests, setRequests] = useState([]);
